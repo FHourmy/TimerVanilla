@@ -1,0 +1,41 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%; /* needed for container min-height */
+	color: white;
+	background-color: green;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#presets {
+	display: flex;
+}
+.button {
+	cursor: pointer;
+	text-align: center;
+}
+
+#controls {
+	display: flex;
+}
+
+#controls .button {
+	margin: 0.4rem;
+}
+.control-icon {
+	width: 1rem;
+	filter: brightness(0) invert(1);
+}
+#presets .button {
+	width: 1rem;
+}
+#presets .button:not(:first-child) {
+	margin-left: 0.2rem;
+}
