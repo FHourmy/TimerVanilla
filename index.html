@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Timer !</title>
+		<title>Timer</title>
 		<meta name="author" content="" />
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,6 +10,27 @@
 	</head>
 
 	<body>
+		<div id="options">
+			<div id="togglers">
+				<div id="toggle-time" class="button" id="play" role="button">
+					<img class="control-icon" src="assets/stopwatch-solid.svg" alt="Play" />
+				</div>
+				<div id="toggle-mood" class="button" id="play" role="button">
+					<img class="control-icon" src="assets/cloud-moon-solid.svg" alt="mood" />
+				</div>
+			</div>
+			<div id="timeroptions" class="hidden">
+				<div id="presets"></div>
+				<div id="custom">
+					<input type="text" id="minutes" />
+					<span id="separator">:</span>
+					<input type="text" id="seconds" />
+					<div class="button" id="set" role="button">Set</div>
+				</div>
+			</div>
+			<div id="moodoptions" class="hidden"></div>
+		</div>
+		<div id="player"></div>
 		<div id="timer">00:00</div>
 		<div id="controls">
 			<div class="button" id="play" role="button">
@@ -20,9 +41,9 @@
 			</div>
 		</div>
 
-		<div id="presets"></div>
-
+		<script src="js/youtubePlayer.js"></script>
 		<script src="js/utils.js"></script>
+		<script src="js/options.js"></script>
 		<script src="js/Clock.js"></script>
 		<script src="js/main.js" defer></script>
 	</body>

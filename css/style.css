@@ -4,7 +4,6 @@ body {
 	padding: 0;
 	height: 100%; /* needed for container min-height */
 	color: white;
-	background-color: green;
 }
 
 body {
@@ -14,28 +13,109 @@ body {
 	justify-content: center;
 }
 
+#options {
+	position: absolute;
+	width: 100%;
+	background-color: black;
+	min-height: 71px;
+	top: 0;
+	display: flex;
+	padding: 0.3rem;
+	padding-left: 2rem;
+}
+
+#player {
+	position: absolute;
+	pointer-events: none;
+	z-index: -99;
+}
+
+#timer {
+	font-size: 20vw;
+}
+
+#custom {
+	display: flex;
+	align-items: center;
+	margin-top: 0.2rem;
+}
+
 #presets {
 	display: flex;
 }
+
+#timeroptions .button,
+#moodoptions .button {
+	min-width: 1rem;
+	padding: 0.3rem;
+	background-color: rgba(255, 255, 255, 0.3);
+	border: 1px solid white;
+	border-radius: 10px;
+}
+
+#moodoptions {
+	display: flex;
+	align-items: baseline;
+}
+
+#options input {
+	width: 2rem;
+	background-color: transparent;
+	color: inherit;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid white;
+}
+
+#options input:first-child {
+	text-align: right;
+}
+
+#separator {
+	font-size: 1rem;
+}
+
+#set {
+	margin-left: 0.5rem;
+}
+
+#timeroptions .button:not(:first-child),
+#moodoptions .button:not(:first-child) {
+	margin-left: 0.5rem;
+}
+
+#controls {
+	display: flex;
+	height: 5rem;
+	position: absolute;
+	bottom: 23%;
+}
+
+#controls .button {
+	margin: 0.4rem;
+	display: flex;
+}
+
+#controls .control-icon {
+	width: 3rem;
+}
+#togglers {
+	margin-right: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
 .button {
 	cursor: pointer;
 	text-align: center;
 }
 
-#controls {
-	display: flex;
-}
-
-#controls .button {
-	margin: 0.4rem;
-}
 .control-icon {
-	width: 1rem;
+	min-width: 1rem;
 	filter: brightness(0) invert(1);
 }
-#presets .button {
-	width: 1rem;
-}
-#presets .button:not(:first-child) {
-	margin-left: 0.2rem;
+
+.hidden {
+	display: none !important;
 }

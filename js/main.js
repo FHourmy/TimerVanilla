@@ -1,18 +1,32 @@
-const clock = new Clock(document.getElementById('timer'), 30 * 60000);
+const clock = new Clock(document.getElementById('timer'), 5 * 60000);
 
-initPresetButtons([5, 10, 15, 20, 30, 45], clock.setBaseTimer);
+initOptions();
+
 const controlElements = getControlElements();
+const { play: playElement, stop: stopElement } = controlElements;
 setControlesListeners(controlElements, clock);
 
 function setControlesListeners({ play, stop }, clock) {
-	play.addEventListener('click', () => {
-		if (!clock.clock) {
-			play.children[0].src = 'assets/pause-solid.svg';
-			clock.play();
-		} else {
-			play.children[0].src = 'assets/play-solid.svg';
-			clock.pause();
+	document.addEventListener('keyup', (event) => {
+		if (event.code === 'Space') {
+			handlePlay(clock);
 		}
 	});
-	stop.addEventListener('click', clock.stop);
+	play.addEventListener('click', () => {
+		handlePlay(clock);
+	});
+	stop.addEventListener('click', () => {
+		clock.stop();
+		player.pauseVideo();
+	});
+}
+
+function handlePlay(clock) {
+	if (!clock.clock) {
+		clock.play();
+		player.playVideo();
+	} else {
+		clock.pause();
+		player.pauseVideo();
+	}
 }

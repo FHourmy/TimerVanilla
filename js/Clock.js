@@ -27,6 +27,7 @@ class Clock {
 		if (!this.clock) {
 			this.start = Date.now();
 			this.end = this.start + this.currentTimer;
+			playElement.children[0].src = 'assets/pause-solid.svg';
 			this.clock = window.setInterval(() => {
 				this.currentTimer = this.end - Date.now();
 				this.setElementValue(this.currentTimer);
@@ -37,6 +38,7 @@ class Clock {
 		}
 	};
 	pause = () => {
+		playElement.children[0].src = 'assets/play-solid.svg';
 		this.clock = window.clearInterval(this.clock);
 	};
 	stop = () => {
