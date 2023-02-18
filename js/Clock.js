@@ -6,11 +6,13 @@ class Clock {
 	 * @param {Node} element : element that display the timer
 	 * @param {number} timer : initial value of the timer
 	 */
-	constructor(element, timer) {
+	constructor(element, timer, onTimerChange, onEnd) {
 		this.baseTimer = timer;
 		this.currentTimer = timer;
 		this.element = element;
 		this.setElementValue(timer);
+		this.onEnd = onEnd;
+		this.onTimerChange = onTimerChange;
 	}
 
 	setBaseTimer = (value) => {
@@ -31,8 +33,11 @@ class Clock {
 			this.clock = window.setInterval(() => {
 				this.currentTimer = this.end - Date.now();
 				this.setElementValue(this.currentTimer);
+				this.onTimerChange(this.currentTimer);
 				if (this.currentTimer <= 0) {
 					this.clock = window.clearInterval(this.clock);
+					this.setElementValue(0);
+					this.onEnd();
 				}
 			}, 1000);
 		}

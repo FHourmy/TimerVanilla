@@ -1,11 +1,55 @@
 const presetTimers = [5, 10, 15, 20, 30, 45];
+
 const moods = [
-	{ text: 'Forêt sombre', id: 'O1BnakexgSU' },
-	{ text: 'Classical Lofi Girl', id: 'jfKfPfyJRdk' },
-	{ text: 'Building Boys', id: 'fR0ZlSDUKCg' },
-	{ text: 'Winter night', id: 'WaOZMNM6Oa4' },
-	{ text: 'Spring Girls', id: 'y--847NiTQw' },
-	{ text: 'Summer beach walk', id: 'Re1m9O7q-9U' },
+	{
+		text: 'Forêt sombre',
+		id: 'O1BnakexgSU',
+		style: {
+			background: 'linear-gradient(0.25turn, #232d35, #6f7182, #232d35)',
+		},
+		start: 12,
+	},
+	{
+		text: 'Classical Lofi Girl',
+		id: 'jfKfPfyJRdk',
+		start: 0,
+		style: {
+			background: 'linear-gradient(0.25turn, #be8c6a, #2c1f17, #5f6149, #7d5437)',
+		},
+		start: undefined,
+	},
+	{
+		text: 'Building Boys',
+		id: 'fR0ZlSDUKCg',
+		style: {
+			background: 'linear-gradient(0.125turn, #23091d, #bf4f72, #f8c4a3)',
+		},
+		start: 12,
+	},
+	{
+		text: 'Winter night',
+		id: 'WaOZMNM6Oa4',
+		style: {
+			background: 'linear-gradient(#4d608e, #c6bbd2, #111834)',
+		},
+		start: 12,
+	},
+	{
+		text: 'Spring Girls',
+		id: 'y--847NiTQw',
+		style: {
+			background: 'linear-gradient(0.4turn, #f6edcc, #d2965d, #b09650)',
+		},
+		start: 18,
+	},
+	{
+		text: 'Summer beach walk',
+		id: 'Re1m9O7q-9U',
+		style: {
+			background: 'linear-gradient(#b884c2, #945490, #e8c6b6, #3a2c3d)',
+		},
+		start: 12,
+	},
 ];
 
 function initOptions() {
@@ -52,15 +96,16 @@ function initPresetButtons(values, callback) {
 }
 
 function initMoodButtons(moods) {
-	moods.forEach(({ text, id }) => {
+	moods.forEach(({ text, id, style, start }) => {
 		const buttonMood = document.createElement('div');
 		buttonMood.addEventListener('click', () => {
 			reloadingVideo = true;
-			player.cueVideoById(id);
+			player.cueVideoById(id, start);
 			clock.pause();
 		});
 		buttonMood.innerText = text;
 		buttonMood.className = 'button';
+		buttonMood.style.background = style.background;
 		document.getElementById('moodoptions').appendChild(buttonMood);
 	});
 }
@@ -70,12 +115,6 @@ function toggleMenu(menuToToggleId) {
 	const menuToToggle = document.getElementById(menuToToggleId);
 	const otherMenu = document.getElementById(otherMenuId);
 
-	if (!otherMenu.className.includes('hidden')) {
-		otherMenu.className += ' hidden';
-	}
-	if (menuToToggle.className.includes('hidden')) {
-		menuToToggle.className = menuToToggle.className.split('hidden').join('');
-	} else {
-		menuToToggle.className += ' hidden';
-	}
+	otherMenu.classList.add('hidden');
+	menuToToggle.classList.toggle('hidden');
 }

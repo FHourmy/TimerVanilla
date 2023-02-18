@@ -1,4 +1,6 @@
-const clock = new Clock(document.getElementById('timer'), 5 * 60000);
+const clock = new Clock(document.getElementById('timer'), 5 * 60000, fadeoutSound, () => {
+	player.pauseVideo();
+});
 
 initOptions();
 
@@ -29,4 +31,9 @@ function handlePlay(clock) {
 		clock.pause();
 		player.pauseVideo();
 	}
+}
+
+function fadeoutSound() {
+	const secondsLeft = clock.currentTimer / 1000;
+	player.setVolume(secondsLeft * 5);
 }
