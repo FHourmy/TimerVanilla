@@ -2,7 +2,7 @@ const presetTimers = [5, 10, 15, 20, 30, 45];
 
 const moods = [
 	{
-		text: 'Forêt sombre',
+		text: 'Dark Forest',
 		id: 'O1BnakexgSU',
 		style: {
 			background: 'linear-gradient(0.25turn, #232d35, #6f7182, #232d35)',
